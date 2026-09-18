@@ -212,7 +212,7 @@ class VoiceConfig(BaseModelNoExtra):
 
     provider: str = Field(
         ...,
-        description="Audio-native provider (e.g. 'openai', 'gemini', 'xai')",
+        description="Audio-native provider (e.g. 'openai', 'BaiRong', 'gemini', 'xai')",
     )
     model: str = Field(
         ...,
