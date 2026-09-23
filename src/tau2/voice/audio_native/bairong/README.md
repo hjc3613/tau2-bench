@@ -1,6 +1,6 @@
 # BaiRong Voice Realtime provider
 
-`br` reuses tau2's OpenAI Realtime event and tick implementation and connects
+`bairong` reuses tau2's OpenAI Realtime event and tick implementation and connects
 it to BaiRong's OpenAI-Realtime-compatible voice service.
 
 The default endpoint is the local development server:
