@@ -7,7 +7,7 @@ Full-duplex voice evaluation via provider-specific realtime APIs. Each provider 
 | Provider | Type | API | Model |
 |----------|------|-----|-------|
 | **openai** | Native audio | OpenAI Realtime API | gpt-realtime-1.5 |
-| **BaiRong** | Native audio | BaiRong Voice Realtime | BaiRong-Voice-Realtime |
+| **bairong** | Native audio | BaiRong Voice Realtime | BaiRong-Voice-Realtime |
 | **gemini** | Native audio | Google Gemini Live | gemini-3.1-flash-live-preview |
 | **xai** | Native audio | xAI Grok Voice Agent | xai-realtime |
 | **nova** | Native audio | Amazon Nova Sonic | amazon.nova-2-sonic-v1:0 |

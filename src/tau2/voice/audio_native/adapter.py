@@ -397,7 +397,7 @@ def create_adapter(
     and the resolved model name.
 
     Args:
-        provider: Provider identifier (openai, openai_live, BaiRong, gemini, xai, nova, qwen,
+        provider: Provider identifier (openai, openai_live, bairong, gemini, xai, nova, qwen,
             livekit).
         tick_duration_ms: Duration of each tick in milliseconds.
         send_audio_instant: If True, send audio in one call per tick.
@@ -450,7 +450,7 @@ def create_adapter(
             reasoning_effort=reasoning_effort,
             audio_format=audio_format,
         )
-    elif provider == "BaiRong":
+    elif provider == "bairong":
         from tau2.voice.audio_native.bairong.discrete_time_adapter import (
             DiscreteTimeBaiRongRealtimeAdapter,
         )

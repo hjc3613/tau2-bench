@@ -9,32 +9,20 @@ from tau2.voice.audio_native.bairong.discrete_time_adapter import (
 )
 
 
-def test_provider_defaults_to_local_service(monkeypatch):
-    monkeypatch.delenv("BAIRONG_REALTIME_BASE_URL", raising=False)
-    monkeypatch.delenv("BAIRONG_REALTIME_API_KEY", raising=False)
-    monkeypatch.delenv("BAIRONG_REALTIME_MODEL", raising=False)
+def test_provider_uses_hosted_service_without_credentials(monkeypatch):
+    monkeypatch.setenv("BAIRONG_REALTIME_BASE_URL", "ws://127.0.0.1:8765")
+    monkeypatch.setenv("BAIRONG_REALTIME_API_KEY", "should-not-be-used")
 
     provider = BaiRongRealtimeProvider()
 
     assert provider.base_url == DEFAULT_BAIRONG_REALTIME_BASE_URL
     assert provider.model == DEFAULT_BAIRONG_REALTIME_MODEL
     assert provider.api_key == "EMPTY"
-
-
-def test_provider_environment_overrides(monkeypatch):
-    monkeypatch.setenv("BAIRONG_REALTIME_BASE_URL", "wss://voice.example/realtime")
-    monkeypatch.setenv("BAIRONG_REALTIME_API_KEY", "secret")
-    monkeypatch.setenv("BAIRONG_REALTIME_MODEL", "production-model")
-
-    provider = BaiRongRealtimeProvider()
-
-    assert provider.base_url == "wss://voice.example/realtime"
-    assert provider.api_key == "secret"
-    assert provider.model == "production-model"
+    assert provider.base_url.startswith("wss://")
 
 
 def test_factory_builds_bairong_adapter():
-    adapter, model = create_adapter("BaiRong", tick_duration_ms=200)
+    adapter, model = create_adapter("bairong", tick_duration_ms=200)
 
     assert isinstance(adapter, DiscreteTimeBaiRongRealtimeAdapter)
     assert model == DEFAULT_BAIRONG_REALTIME_MODEL

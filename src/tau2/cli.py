@@ -260,7 +260,7 @@ def add_run_args(parser):
         choices=[
             "openai",
             "openai_live",
-            "BaiRong",
+            "bairong",
             "gemini",
             "xai",
             "nova",

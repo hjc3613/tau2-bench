@@ -98,7 +98,7 @@ DEFAULT_SPEECH_COMPLEXITY = "regular"  # overridable: "control", "regular"
 # =============================================================================
 DEFAULT_AUDIO_NATIVE_AGENT_IMPLEMENTATION = "discrete_time_audio_native_agent"
 DEFAULT_AUDIO_NATIVE_USER_IMPLEMENTATION = "voice_streaming_user_simulator"
-DEFAULT_AUDIO_NATIVE_PROVIDER = "openai"  # overridable: openai, openai_live, BaiRong, gemini, xai, nova, qwen, livekit
+DEFAULT_AUDIO_NATIVE_PROVIDER = "openai"  # overridable; see DEFAULT_AUDIO_NATIVE_MODELS
 DEFAULT_TICK_DURATION_SECONDS = 0.20  # overridable
 DEFAULT_MAX_STEPS_SECONDS = 1200  # overridable
 DEFAULT_SEND_AUDIO_INSTANT = False  # overridable
@@ -149,10 +149,12 @@ DEFAULT_OPENAI_TRANSCRIPTION_MODEL = "gpt-4o-transcribe"  # overridable
 DEFAULT_WHISPER_MODEL = "whisper-1"  # fixed
 
 # =============================================================================
-# BAIRONG PROVIDER (OpenAI-Realtime-compatible local/external endpoint)
+# BAIRONG PROVIDER (OpenAI-Realtime-compatible hosted endpoint)
 # =============================================================================
 DEFAULT_BAIRONG_REALTIME_MODEL = "BaiRong-Voice-Realtime"
-DEFAULT_BAIRONG_REALTIME_BASE_URL = "ws://127.0.0.1:8765/v1/realtime"
+DEFAULT_BAIRONG_REALTIME_BASE_URL = (
+    "wss://model-api.resultscloud.com/realtime-service/v1/realtime"
+)
 DEFAULT_BAIRONG_REALTIME_API_KEY = "EMPTY"
 
 # =============================================================================
@@ -213,7 +215,7 @@ DEFAULT_QWEN_OUTPUT_SAMPLE_RATE = 24000  # fixed, API-defined
 DEFAULT_AUDIO_NATIVE_MODELS = {
     "openai": DEFAULT_OPENAI_REALTIME_MODEL,
     "openai_live": DEFAULT_OPENAI_LIVE_MODEL,
-    "BaiRong": DEFAULT_BAIRONG_REALTIME_MODEL,
+    "bairong": DEFAULT_BAIRONG_REALTIME_MODEL,
     "gemini": DEFAULT_GEMINI_MODEL,
     "xai": DEFAULT_XAI_MODEL,
     "nova": DEFAULT_NOVA_MODEL,
@@ -224,7 +226,7 @@ DEFAULT_AUDIO_NATIVE_MODELS = {
 DEFAULT_AUDIO_NATIVE_REASONING_EFFORT: dict[str, str | None] = {
     "openai": None,
     "openai_live": None,
-    "BaiRong": None,
+    "bairong": None,
     "gemini": "high",
     "xai": "high",
     "nova": None,
@@ -235,7 +237,7 @@ DEFAULT_AUDIO_NATIVE_REASONING_EFFORT: dict[str, str | None] = {
 AUDIO_NATIVE_PROVIDER_TYPES = {
     "openai": "audio_native",
     "openai_live": "audio_native",
-    "BaiRong": "audio_native",
+    "bairong": "audio_native",
     "gemini": "audio_native",
     "xai": "audio_native",
     "nova": "audio_native",

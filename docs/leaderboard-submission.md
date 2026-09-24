@@ -486,7 +486,7 @@ Required when `modality` is `"voice"`:
 
 | Field | Required | Description |
 |-------|----------|-------------|
-| `provider` | Yes | Audio-native provider (e.g. `"openai"`, `"gemini"`, `"xai"`) |
+| `provider` | Yes | Audio-native provider (e.g. `"openai"`, `"bairong"`, `"gemini"`, `"xai"`) |
 | `model` | Yes | Model identifier (e.g. `"gpt-realtime-1.5"`) |
 | `tick_duration_seconds` | No | Duration of each simulation tick in seconds |
 | `max_steps_seconds` | No | Maximum simulation duration in seconds |

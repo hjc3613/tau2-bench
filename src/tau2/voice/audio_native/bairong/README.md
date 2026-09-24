@@ -3,25 +3,17 @@
 `bairong` reuses tau2's OpenAI Realtime event and tick implementation and connects
 it to BaiRong's OpenAI-Realtime-compatible voice service.
 
-The default endpoint is the local development server:
+The provider connects to the hosted BaiRong service by default:
 
 ```text
-ws://127.0.0.1:8765/v1/realtime
-```
-
-Configure a local or future public deployment without changing tau2 code:
-
-```bash
-export BAIRONG_REALTIME_BASE_URL=wss://voice.example.com/v1/realtime
-export BAIRONG_REALTIME_API_KEY=...
-export BAIRONG_REALTIME_MODEL=BaiRong-Voice-Realtime
+wss://model-api.resultscloud.com/realtime-service/v1/realtime
 ```
 
 Run a tau-voice evaluation with:
 
 ```bash
-tau2 run --domain retail --audio-native \
-  --audio-native-provider BaiRong \
+uv run tau2 run --domain retail --audio-native \
+  --audio-native-provider bairong \
   --audio-native-model BaiRong-Voice-Realtime \
   --num-tasks 1 --verbose-logs
 ```
