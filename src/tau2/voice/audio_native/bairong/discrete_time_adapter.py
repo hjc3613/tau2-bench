@@ -11,6 +11,8 @@ from tau2.voice.audio_native.openai.discrete_time_adapter import (
 class DiscreteTimeBaiRongRealtimeAdapter(DiscreteTimeOpenAIAdapter):
     """Reuse OpenAI Realtime tick handling against the BaiRong endpoint."""
 
+    USAGE_PROVIDER = "bairong"
+
     @property
     def provider(self) -> BaiRongRealtimeProvider:
         if self._provider is None:
